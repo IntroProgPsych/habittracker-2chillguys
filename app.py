@@ -9,17 +9,6 @@ def main ():
     #use print statements such as this one, to mark important points in the application, to help you with debugging
     print("Starting application...")
 
-    scores = {"PhysicalActivity": 0, "HealthyEating": 0, "SleepRoutine": 0, "Mindfulness": 0, "SocialConnection": 0}
-
-    for item in items:
-        answer = get_valid_input(item["text"])
-        scores[item["habit"]] += answer
-
-    print("\nHabit Adherence Scores:")
-    for category, score in scores.items():
-        interpretation = interpret_score(score)
-        print(f"{category}: {score} - {interpretation}")
-
 #please do not change the lines below, they are needed for your tests to work properly
 #write all your code in the current file, and all your tests in the tests.py file
 if __name__ == "__main__":
