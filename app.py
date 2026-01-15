@@ -42,7 +42,6 @@ items = [
     {"text": "How many days per week do you get at least 8 hours of sleep?", "habit": "SleepRoutine"} 
 ]
 
-
 def get_valid_input(question):
     while True:
         try:
@@ -50,7 +49,7 @@ def get_valid_input(question):
             if answer >=0 and answer <= 7: 
                 return answer
             else:
-                print("Error. Enter a number between 0 and 7.")
+                print("Error. Enter a number between 0 and 7.") 
         except ValueError:
             print("Please enter a number.") 
 
@@ -65,7 +64,7 @@ def interpret_score(score):
 
 scores = {"PhysicalActivity": 0, "HealthyEating": 0, "SleepRoutine": 0, "Mindfulness": 0, "SocialConnection": 0}
 
-for item in items:
+for item in items: 
     answer = get_valid_input(item["text"])
     scores[item["habit"]] += answer 
 
