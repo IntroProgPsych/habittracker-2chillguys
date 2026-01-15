@@ -31,10 +31,10 @@ items = [
     {"text": "How many days per week do you get at least 8 hours of sleep?", "habit": "SleepRoutine"} 
 ]
 
-def get_valid_input(question):
+def valid_input(question):
     while True:
         try:
-            answer = int(input(question + " (0-7): "))
+            answer = int(input(question))
             if answer >=0 and answer <= 7: 
                 return answer
             else:
@@ -43,25 +43,25 @@ def get_valid_input(question):
             print("Please enter a number.") 
 
 def interpret_score(score):
-    if score >= 5:
-        return "High adherence"
-    elif score >= 3:
-        return "Moderate adherence"
+    if score >= 12:
+        return "High"
+    elif score >= 6 and score <= 11:
+        return "Moderate"
     else:
-        return "Low adherence"
+        return "Low"
     
 
 scores = {"PhysicalActivity": 0, "HealthyEating": 0, "SleepRoutine": 0, "Mindfulness": 0, "SocialConnection": 0}
 
 for item in items: 
-    answer = get_valid_input(item["text"])
+    answer = valid_input(item["text"])
     scores[item["habit"]] += answer 
 
 
-print("\nHabit Adherence Scores:")  
+print("\nHabit Scores:")  
 for category, score in scores.items():
         interpretation = interpret_score(score)
-        print(f"{category}: {score} - {interpretation}")
+        print(f"{category}: {score} - {interpretation}") 
 
 
 
