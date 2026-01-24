@@ -13,3 +13,55 @@ def main ():
 #write all your code in the current file, and all your tests in the tests.py file
 if __name__ == "__main__":
     main()
+
+items = [
+    {"text": "How many days per week do you go to bed at a consistent hour?", "habit": "SleepRoutine"}, 
+    {"text": "How many days per week do you eat at least one healthy meal?", "habit": "HealthyEating"},
+    {"text": "How many days per week do you practice mindfulness or relaxation?", "habit": "Mindfulness"},
+    {"text": "How many days per week do you spend meaningful time with others?", "habit": "SocialConnection"},
+    {"text": "How many days per week do you exercise for at least 20 minutes?", "habit": "PhysicalActivity"}, 
+    {"text": "How many days per week do you reach 10k steps?", "habit": "PhysicalActivity"}, 
+    {"text": "How many days per week do you participate in group activities?", "habit": "SocialConnection"},
+    {"text": "How many days per week do you practice journaling?", "habit": "Mindfulness"},
+    {"text": "How many days per week do you practice yoga?", "habit": "Mindfulness"}, 
+    {"text": "How many days per week do you reach your protein goal?", "habit": "HealthyEating"},
+    {"text": "How many days per week do you eat the recommended 3 meals a day?", "habit": "HealthyEating"}, 
+    {"text": "How many days per week do you lift weights?", "habit": "PhysicalActivity"},
+    {"text": "How many days per week do you wake up rested?", "habit": "SleepRoutine"},
+    {"text": "How many days per week do you get at least 8 hours of sleep?", "habit": "SleepRoutine"} 
+]
+
+def valid_input(question):
+    while True:
+        try:
+            answer = int(input(question))
+            if answer >=0 and answer <= 7: 
+                return answer
+            else:
+                print("Error. Enter a number between 0 and 7.") 
+        except ValueError:
+            print("Please enter a number.") 
+
+def interpret_score(score):
+    if score >= 12:
+        return "High"
+    elif score >= 6 and score <= 11:
+        return "Moderate"
+    else:
+        return "Low"
+    
+
+scores = {"PhysicalActivity": 0, "HealthyEating": 0, "SleepRoutine": 0, "Mindfulness": 0, "SocialConnection": 0}
+
+for item in items: 
+    answer = valid_input(item["text"])
+    scores[item["habit"]] += answer 
+
+
+print("\nHabit Scores:")  
+for category, score in scores.items():
+        interpretation = interpret_score(score)
+        print(f"{category}: {score} - {interpretation}") 
+
+
+
